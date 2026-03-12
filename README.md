@@ -1,1 +1,1 @@
-# homebrew-lpm
+# lpm for homebrew
