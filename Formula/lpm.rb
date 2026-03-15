@@ -8,8 +8,14 @@ class Lpm < Formula
 
   depends_on "go" => :build
 
+  livecheck do
+    url :stable
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+  end
+
   def install
-    system "go", "build", "-o", bin/"lpm", "."
+    ldflags = "-s -w -X main.version=#{version}"
+    system "go", "build", *std_go_args(ldflags: ldflags)
   end
 
   test do
